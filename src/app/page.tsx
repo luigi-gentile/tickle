@@ -427,7 +427,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, role, 
         height={80}
         className="w-20 h-20 rounded-full mb-4 object-cover border-2 border-teal-400"
       />
-      <p className="text-lg italic text-gray-700 mb-4">"{quote}"</p>
+      <p className="text-lg italic text-gray-700 mb-4">{quote}</p>
       <p className="font-semibold text-gray-900 font-heading">{author}</p>
       <p className="text-sm text-gray-500">{role}</p>
     </div>
