@@ -2,9 +2,8 @@
 "use client"; // Marca il componente come Client Component
 
 import React from 'react';
-// Importa Image da 'next/image' se desideri usarlo per ottimizzare le immagini e prevenire errori di hydration per le immagini.
-// Se non lo usi, assicurati che i percorsi delle tue immagini siano corretti e che le immagini esistano.
-// import Image from 'next/image';
+import Link from 'next/link'; // Importa il componente Link di Next.js
+import Image from 'next/image'; // Importa il componente Image di Next.js
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, DollarSign, Lightbulb, FileText, Timer, LayoutDashboard, Briefcase, Download, BarChart2, Smartphone, Zap, Globe, Euro, Users, Star, MessageSquare, ShieldCheck, TrendingUp, Handshake } from 'lucide-react';
@@ -50,7 +49,8 @@ export default function Home() {
       {/* Header */}
       <header className="py-4 px-6 md:px-12 bg-blue-800 text-white shadow-lg sticky top-0 z-50">
         <nav className="container mx-auto flex justify-between items-center">
-          <a href="/" className="flex items-center space-x-2 text-2xl font-bold text-white">
+          {/* Correzione: Uso di <Link> per il logo */}
+          <Link href="/" className="flex items-center space-x-2 text-2xl font-bold text-white">
             <svg
               width="32"
               height="32"
@@ -75,12 +75,13 @@ export default function Home() {
               />
             </svg>
             <span>Tickle</span>
-          </a>
+          </Link>
           <div className="space-x-4">
-            <a href="#funzionalita" className="text-white hover:text-teal-300 transition-colors">Funzionalità</a>
-            <a href="#pricing" className="text-white hover:text-teal-300 transition-colors">Prezzi</a>
+            {/* Correzione: Uso di <Link> per i link di navigazione */}
+            <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors">Funzionalità</Link>
+            <Link href="#pricing" className="text-white hover:text-teal-300 transition-colors">Prezzi</Link>
             <Button asChild className="bg-teal-400 hover:bg-teal-500 text-blue-900 rounded-full px-6 py-2">
-              <a href="#cta">Inizia Ora</a>
+              <Link href="#cta">Inizia Ora</Link>
             </Button>
           </div>
         </nav>
@@ -93,8 +94,9 @@ export default function Home() {
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 font-heading"> {/* Usa font-heading se configurato */}
               <span className="text-teal-300">Tickle:</span> Ogni Minuto Conta. Il Time Tracker Semplice ed Economico per IT Freelance e Consulenti.
             </h1>
+            {/* Correzione: Apostrofo escapato */}
             <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Trasforma ogni secondo lavorato in fatturato. Recupera il tempo prezioso e massimizza i tuoi guadagni con l'unica soluzione pensata per le tue esigenze.
+              Trasforma ogni secondo lavorato in fatturato. Recupera il tempo prezioso e massimizza i tuoi guadagni con l&apos;unica soluzione pensata per le tue esigenze.
             </p>
             <Button asChild size="lg" className="bg-teal-400 hover:bg-teal-500 text-blue-900 font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-all duration-300 transform hover:scale-105">
               <a href="#cta">Inizia Ora Gratis</a>
@@ -112,12 +114,12 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-purple-900 opacity-20 transform -rotate-45 scale-150"></div>
                 <div className="relative z-10 text-center">
                     <p className="text-white text-xl md:text-2xl font-semibold mb-4">La tua dashboard di Tickle qui!</p>
-                    <p className="text-gray-300 text-lg">Immagina uno screenshot pulito e moderno della dashboard di Tickle, o un mockup di un laptop/tablet con l'interfaccia utente.</p>
-                    <p className="text-gray-400 text-sm mt-4">Questo darà subito un'idea chiara del tuo prodotto.</p>
-                    {/* Esempio di come potresti includere un'immagine reale con il tag <img>: */}
-                    {/* <img src="/images/tickle-dashboard-mockup.png" alt="Tickle Dashboard" className="mt-8 rounded-lg shadow-xl border border-blue-500" /> */}
+                    <p className="text-gray-300 text-lg">Immagina uno screenshot pulito e moderno della dashboard di Tickle, o un mockup di un laptop/tablet con l&apos;interfaccia utente.</p> {/* Correzione: Apostrofo escapato */}
+                    <p className="text-gray-400 text-sm mt-4">Questo darà subito un&apos;idea chiara del tuo prodotto.</p> {/* Correzione: Apostrofo escapato */}
+                    {/* Esempio di come potresti includere un'immagine reale con il componente <Image> di Next.js: */}
                     {/* Se usi 'next/image', ricordati di importarlo e di configurare i domini immagine in next.config.js: */}
                     {/* <Image src="/images/tickle-dashboard-mockup.png" alt="Tickle Dashboard" width={800} height={450} className="mt-8 rounded-lg shadow-xl border border-blue-500" /> */}
+                    {/* Se non vuoi usare next/image, assicurati che il percorso dell'immagine sia corretto */}
                 </div>
             </div>
           </div>
@@ -131,7 +133,7 @@ export default function Home() {
             Il Tuo Tempo è Denaro. Non Perderne Più.
           </h2>
           <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Consulenti IT e freelance spesso sottostimano il tempo dedicato ai progetti, perdendo fino al <span className="font-extrabold text-red-600 text-2xl md:text-3xl animate-pulse">25%</span> del potenziale fatturato. Le soluzioni attuali sono complesse o eccessivamente costose. <span className="font-bold">Tickle</span> ti offre la semplicità e l'efficienza per recuperare ogni minuto e massimizzare i tuoi guadagni.
+            Consulenti IT e freelance spesso sottostimano il tempo dedicato ai progetti, perdendo fino al <span className="font-extrabold text-red-600 text-2xl md:text-3xl animate-pulse">25%</span> del potenziale fatturato. Le soluzioni attuali sono complesse o eccessivamente costose. <span className="font-bold">Tickle</span> ti offre la semplicità e l&apos;efficienza per recuperare ogni minuto e massimizzare i tuoi guadagni. {/* Correzione: Apostrofo escapato */}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
@@ -164,7 +166,7 @@ export default function Home() {
             <FeatureCard
               icon={<Timer className="w-10 h-10 text-blue-600" />}
               title="Timer One-Click Intuitivo"
-              description="Avvia e ferma il timer con un solo click. Passa da un progetto all'altro con massima rapidità e precisione."
+              description="Avvia e ferma il timer con un solo click. Passa da un progetto all&apos;altro con massima rapidità e precisione."
             />
             <FeatureCard
               icon={<LayoutDashboard className="w-10 h-10 text-blue-600" />}
@@ -183,7 +185,7 @@ export default function Home() {
             />
             <FeatureCard
               icon={<BarChart2 className="w-10 h-10 text-blue-600" />}
-              title="Report Intelligenti per l'Analisi"
+              title="Report Intelligenti per l&apos;Analisi"
               description="Analizza la tua produttività con report chiari, scopri dove ottimizzare il tuo tempo e prendi decisioni basate sui dati."
             />
             <FeatureCard
@@ -202,7 +204,7 @@ export default function Home() {
             Perché Scegliere Tickle: I Nostri Punti di Forza.
           </h2>
           <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Tickle è il time tracker che si adatta perfettamente alle tue esigenze, offrendo un'esperienza d'uso superiore.
+            Tickle è il time tracker che si adatta perfettamente alle tue esigenze, offrendo un&apos;esperienza d&apos;uso superiore. {/* Correzione: Apostrofo escapato */}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -214,12 +216,12 @@ export default function Home() {
             <DifferentiatorCard
               icon={<Globe className="w-10 h-10 text-teal-600" />}
               title="Interfaccia Completamente in Italiano"
-              description="Progettato da italiani, per professionisti italiani. Un'interfaccia chiara, intuitiva e senza barriere linguistiche."
+              description="Progettato da italiani, per professionisti italiani. Un&apos;interfaccia chiara, intuitiva e senza barriere linguistiche."
             />
             <DifferentiatorCard
               icon={<Euro className="w-10 h-10 text-teal-600" />}
               title="Pricing Trasparente e Conveniente"
-              description="Piani chiari, senza costi nascosti o funzionalità 'freemium' che ti confondono. Sai sempre quanto spendi, con la massima onestà."
+              description="Piani chiari, senza costi nascosti o funzionalità &quot;freemium&quot; che ti confondono. Sai sempre quanto spendi, con la massima onestà." 
             />
             <DifferentiatorCard
               icon={<CodeIcon className="w-10 h-10 text-teal-600" />}
@@ -476,9 +478,17 @@ interface TestimonialCardProps {
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, role, avatar }) => {
   return (
     <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300">
-      {/* Usando il tag <img> semplice per evitare errori di hydration se 'next/image' non è configurato correttamente.
-          Assicurati che i percorsi delle immagini siano corretti. */}
-      <img key={avatar} src={avatar} alt={`Avatar di ${author}`} className="w-20 h-20 rounded-full mb-4 object-cover border-2 border-teal-400" />
+      {/* Utilizza il componente <Image> di Next.js per l'ottimizzazione.
+          Assicurati che 'width', 'height' e 'alt' siano sempre presenti.
+          Se le immagini provengono da un CDN esterno, devi aggiungere i domini in next.config.js. */}
+      <Image
+        key={avatar} // Importante per React se l'URL dell'avatar può cambiare dinamicamente
+        src={avatar}
+        alt={`Avatar di ${author}`}
+        width={80} // Specifica una larghezza per l'ottimizzazione di Next.js
+        height={80} // Specifica un'altezza per l'ottimizzazione di Next.js
+        className="w-20 h-20 rounded-full mb-4 object-cover border-2 border-teal-400"
+      />
       <p className="text-lg italic text-gray-700 mb-4">"{quote}"</p>
       <p className="font-semibold text-gray-900 font-heading">{author}</p>
       <p className="text-sm text-gray-500">{role}</p>
