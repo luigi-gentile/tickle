@@ -172,7 +172,7 @@ export default function Home() {
             <DifferentiatorCard
               icon={<Euro className="w-10 h-10 text-teal-600" />}
               title="Pricing Trasparente e Conveniente"
-              description="Piani chiari, senza costi nascosti o funzionalità &quot;freemium&quot; che ti confondono. Sai sempre quanto spendi, con la massima onestà."
+              description="Piani chiari, senza costi nascosti o funzionalità freemium che ti confondono. Sai sempre quanto spendi, con la massima onestà."
             />
             <DifferentiatorCard
               icon={<CodeIcon className="w-10 h-10 text-teal-600" />}
