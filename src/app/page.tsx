@@ -1,103 +1,85 @@
-import Image from "next/image";
+// src/app/page.tsx
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="min-h-screen bg-white text-gray-900 flex flex-col items-center justify-center px-4 py-10">
+      <div className="max-w-xl w-full text-center space-y-10">
+        {/* Hero */}
+        <div className="space-y-4">
+          <h1 className="text-4xl md:text-5xl font-bold">
+            Time tracking in 30 secondi per consulenti IT
+          </h1>
+          <p className="text-lg text-gray-600">
+            Dimentica Toggl e Harvest. TimeTracker Pro è semplice, veloce e pensato per il mercato italiano.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        {/* Email Form */}
+        <form
+          action="https://formspree.io/f/mnqeyzow" // TEMPORARY demo endpoint — sostituibile
+          method="POST"
+          className="flex flex-col sm:flex-row gap-3 justify-center"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Inserisci la tua email"
+            className="px-4 py-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+          >
+            Unisciti alla waitlist
+          </button>
+        </form>
+
+        {/* Benefits */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left pt-10">
+          <div>
+            <h3 className="font-semibold text-lg">🚀 Setup in 30 secondi</h3>
+            <p className="text-gray-600">Avvia il timer subito dopo la registrazione.</p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-lg">🇮🇹 UI in italiano</h3>
+            <p className="text-gray-600">Pensato per freelance e consulenti IT italiani.</p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-lg">📁 Export contabilità</h3>
+            <p className="text-gray-600">Esporta i dati in formato compatibile con i commercialisti.</p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-lg">📊 Dashboard semplice</h3>
+            <p className="text-gray-600">Panoramica giornaliera e settimanale immediata.</p>
+          </div>
+        </div>
+
+        {/* CTA finale */}
+        <div className="pt-10">
+          <p className="text-xl font-medium">Vuoi provarlo in anteprima?</p>
+          <p className="text-gray-600 mb-4">Iscriviti alla waitlist per accedere alla beta privata.</p>
+          <form
+            action="https://formspree.io/f/mnqeyzow" // stesso form anche qui
+            method="POST"
+            className="flex flex-col sm:flex-row gap-3 justify-center"
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Tua email"
+              className="px-4 py-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+            >
+              Iscrivimi
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
   );
 }
