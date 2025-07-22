@@ -89,10 +89,9 @@ export default function Home() {
             <Button asChild size="lg" className="bg-teal-400 hover:bg-teal-500 text-blue-900 font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-all duration-300 transform hover:scale-105">
               <a href="#cta">Inizia Ora Gratis</a>
             </Button>
-            <p className="mt-4 text-sm opacity-80">Nessuna carta di credito richiesta. Prova senza impegno.</p>
-            <div className="mt-8 text-sm opacity-80 flex items-center justify-center space-x-2">
+            <div className="mt-5 text-sm opacity-80 flex items-center justify-center space-x-2">
               <CheckCircle className="w-5 h-5 text-teal-300" />
-              <span>Già scelto da centinaia di professionisti come te!</span>
+              <span>Nessuna carta di credito richiesta. Prova senza impegno</span>
             </div>
           </div>
           <div className="mt-16 relative w-full max-w-4xl mx-auto animate-fade-in-up animate-delay-300">
@@ -221,37 +220,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="testimonials" className="py-20 bg-blue-50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-800 mb-12">
-            Dicono di Noi.
-          </h2>
-          <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Ascolta chi ha già trasformato il proprio modo di lavorare con Tickle.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <TestimonialCard
-              quote="Tickle ha semplificato la mia vita da freelance. Ora so esattamente quanto tempo dedico a ogni cliente e la fatturazione è un gioco da ragazzi. Incredibile!"
-              author="Marco Rossi"
-              role="Consulente IT Senior"
-              avatar="/images/avatar-placeholder-1.png"
-            />
-            <TestimonialCard
-              quote="Ero stufo di software complicati. Tickle è rapido, intuitivo e mi ha aiutato a recuperare ore di lavoro che prima non tracciavo. Veramente consigliato!"
-              author="Laura Bianchi"
-              role="Sviluppatrice Frontend"
-              avatar="/images/avatar-placeholder-2.png"
-            />
-            <TestimonialCard
-              quote="Per la nostra piccola software house, Tickle è la soluzione perfetta. Gestiamo i progetti di team con facilità e i report sono ideali per la contabilità."
-              author="Giulia Verdi"
-              role="CTO, SmallDev Solutions"
-              avatar="/images/avatar-placeholder-3.png"
-            />
-          </div>
-        </div>
-      </section>
+      {/* SEZIONE TESTIMONIALS RIMOSSA */}
 
       <section id="pricing" className="py-20 bg-blue-700 text-white">
         <div className="container mx-auto px-4 text-center">
@@ -259,55 +228,37 @@ export default function Home() {
             Scegli il Piano Perfetto per Te.
           </h2>
           <p className="text-lg md:text-xl mb-12 max-w-3xl mx-auto opacity-90">
-            Flessibilità e valore per ogni esigenza, dal singolo freelance alla piccola software house.
+            Inizia con il piano gratuito e passa al Premium quando sei pronto a massimizzare i tuoi guadagni.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"> {/* Modificato a 2 colonne */}
             <PricingCard
-              title="Starter Plan"
-              price="€8"
+              title="Free Plan"
+              price="€0"
               frequency="/mese"
               features={[
-                "1 utente",
-                "5 progetti attivi",
-                "Timer base",
-                "Export CSV",
-                "Supporto via email"
+                "Fino a 3 progetti attivi",
+                "Report giornalieri semplici",
               ]}
-              buttonText="Inizia con Starter"
+              buttonText="Inizia Gratis"
               isPrimary={false}
             />
             <PricingCard
-              title="Professional Plan"
+              title="Premium Plan"
               price="€15"
               frequency="/mese"
               features={[
-                "1 utente",
                 "Progetti illimitati",
-                "Report avanzati",
-                "Export PDF",
-                "Backup automatico",
-                "Supporto prioritario"
+                "Report avanzati e personalizzabili",
+                "Export PDF e CSV",
+                "Supporto via email",
               ]}
-              buttonText="Passa a Professional"
+              buttonText="Passa a Premium"
               isPrimary={true}
             />
-            <PricingCard
-              title="Team Plan"
-              price="€10"
-              frequency="/utente/mese (min 3 utenti)"
-              features={[
-                "Collaborazione di team",
-                "Dashboard admin",
-                "Fatturazione centralizzata",
-                "Progetti illimitati",
-                "Supporto dedicato"
-              ]}
-              buttonText="Richiedi Demo Team"
-              isPrimary={false}
-            />
+            {/* Rimosso il Team Plan per focalizzarsi su Free/Premium come richiesto */}
           </div>
-          <p className="mt-12 text-sm opacity-80">Tutti i piani includono un periodo di prova gratuito di 7 giorni.</p>
+          <p className="mt-12 text-sm opacity-80">Senza impegno, passa al piano Premium quando desideri funzionalità aggiuntive.</p>
         </div>
       </section>
 
@@ -434,30 +385,5 @@ const PricingCard: React.FC<PricingCardProps> = ({ title, price, frequency, feat
         </Button>
       </CardFooter>
     </Card>
-  );
-};
-
-interface TestimonialCardProps {
-  quote: string;
-  author: string;
-  role: string;
-  avatar: string;
-}
-
-const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, role, avatar }) => {
-  return (
-    <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300">
-      <Image
-        key={avatar}
-        src={avatar}
-        alt={`Avatar di ${author}`}
-        width={80}
-        height={80}
-        className="w-20 h-20 rounded-full mb-4 object-cover border-2 border-teal-400"
-      />
-      <p className="text-lg italic text-gray-700 mb-4">{quote}</p>
-      <p className="font-semibold text-gray-900 font-heading">{author}</p>
-      <p className="text-sm text-gray-500">{role}</p>
-    </div>
   );
 };
