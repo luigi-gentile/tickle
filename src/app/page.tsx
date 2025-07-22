@@ -185,7 +185,7 @@ export default function Home() {
             />
             <FeatureCard
               icon={<BarChart2 className="w-10 h-10 text-blue-600" />}
-              title="Report Intelligenti per l&apos;Analisi"
+              title="Report Intelligenti per l&apos;Analisi" 
               description="Analizza la tua produttività con report chiari, scopri dove ottimizzare il tuo tempo e prendi decisioni basate sui dati."
             />
             <FeatureCard
@@ -204,7 +204,7 @@ export default function Home() {
             Perché Scegliere Tickle: I Nostri Punti di Forza.
           </h2>
           <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Tickle è il time tracker che si adatta perfettamente alle tue esigenze, offrendo un&apos;esperienza d&apos;uso superiore. {/* Correzione: Apostrofo escapato */}
+            Tickle è il time tracker che si adatta perfettamente alle tue esigenze, offrendo un&apos;esperienza d&apos;uso superiore.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -221,7 +221,7 @@ export default function Home() {
             <DifferentiatorCard
               icon={<Euro className="w-10 h-10 text-teal-600" />}
               title="Pricing Trasparente e Conveniente"
-              description="Piani chiari, senza costi nascosti o funzionalità &quot;freemium&quot; che ti confondono. Sai sempre quanto spendi, con la massima onestà." 
+              description="Piani chiari, senza costi nascosti o funzionalità &quot;freemium&quot; che ti confondono. Sai sempre quanto spendi, con la massima onestà."
             />
             <DifferentiatorCard
               icon={<CodeIcon className="w-10 h-10 text-teal-600" />}
