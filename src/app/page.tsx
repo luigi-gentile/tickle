@@ -80,11 +80,11 @@ export default function Home() {
       <section id="hero" className="relative bg-gradient-to-br from-blue-700 to-indigo-800 text-white py-20 md:py-32 overflow-hidden flex items-center justify-center">
         <div className="container mx-auto px-4 text-center z-10 relative">
           <div className="md:w-3/4 lg:w-2/3 mx-auto animate-fade-in-up">
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 font-heading">
-              <span className="text-teal-300">Tickle:</span> Ogni Minuto Conta. Il Time Tracker Semplice ed Economico per IT Freelance e Consulenti.
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 font-heading">
+              Il tempo che tracci è fatturato che incassi. Ogni minuto conta.
             </h1>
             <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Trasforma ogni secondo lavorato in fatturato. Recupera il tempo prezioso e massimizza i tuoi guadagni con l&apos;unica soluzione pensata per le tue esigenze.
+              <span className="text-teal-300 font-bold">Tickle</span> è la soluzione pensata per professionisti digitali che desiderano monitorare le ore lavorate, gestire progetti con precisione e generare report pronti per la fatturazione, in modo semplice e veloce
             </p>
             <Button asChild size="lg" className="bg-teal-400 hover:bg-teal-500 text-blue-900 font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-all duration-300 transform hover:scale-105">
               <a href="#cta">Inizia Ora Gratis</a>
@@ -455,7 +455,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, role, 
         height={80}
         className="w-20 h-20 rounded-full mb-4 object-cover border-2 border-teal-400"
       />
-      <p className="text-lg italic text-gray-700 mb-4">"{quote}"</p>
+      <p className="text-lg italic text-gray-700 mb-4">{quote}</p>
       <p className="font-semibold text-gray-900 font-heading">{author}</p>
       <p className="text-sm text-gray-500">{role}</p>
     </div>
