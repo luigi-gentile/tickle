@@ -1,14 +1,17 @@
+// app/page.tsx
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react'; // Importa useState
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, DollarSign, Lightbulb, FileText, Timer, LayoutDashboard, Briefcase, Download, BarChart2, Smartphone, Zap, Globe, Euro, TrendingUp } from 'lucide-react';
+import { CheckCircle, DollarSign, Lightbulb, FileText, Timer, LayoutDashboard, Briefcase, Download, BarChart2, Smartphone, Zap, Globe, Euro, TrendingUp, Menu, X } from 'lucide-react'; // Aggiungi Menu e X per le icone del toggle
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Stato per il menu mobile
+
   return (
     <div className="min-h-screen bg-gray-50 font-sans antialiased">
       <header className="py-4 px-6 md:px-12 bg-blue-800 text-white shadow-lg sticky top-0 z-50">
@@ -39,7 +42,20 @@ export default function Home() {
             </svg>
             <span>Tickle</span>
           </Link>
-          <div className="space-x-4">
+
+          {/* Icona Hamburger/Close per Mobile */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-white focus:outline-none"
+              aria-label="Toggle navigation menu"
+            >
+              {isMobileMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+            </button>
+          </div>
+
+          {/* Links per Desktop */}
+          <div className="hidden md:flex space-x-4 items-center">
             <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors">Funzionalità</Link>
             <Link href="#pricing" className="text-white hover:text-teal-300 transition-colors">Prezzi</Link>
             <Button asChild className="bg-teal-400 hover:bg-teal-500 text-blue-900 rounded-full px-6 py-2">
@@ -47,8 +63,20 @@ export default function Home() {
             </Button>
           </div>
         </nav>
+
+        {/* Menu Mobile a scomparsa */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-blue-700 py-4 px-6 space-y-4 flex flex-col items-center">
+            <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors text-lg" onClick={() => setIsMobileMenuOpen(false)}>Funzionalità</Link>
+            <Link href="#pricing" className="text-white hover:text-teal-300 transition-colors text-lg" onClick={() => setIsMobileMenuOpen(false)}>Prezzi</Link>
+            <Button asChild className="bg-teal-400 hover:bg-teal-500 text-blue-900 rounded-full px-6 py-2 text-lg">
+              <Link href="#cta" onClick={() => setIsMobileMenuOpen(false)}>Inizia Ora</Link>
+            </Button>
+          </div>
+        )}
       </header>
 
+      {/* Resto del tuo codice della pagina rimane invariato */}
       <section id="hero" className="relative bg-gradient-to-br from-blue-700 to-indigo-800 text-white py-20 md:py-32 overflow-hidden flex items-center justify-center">
         <div className="container mx-auto px-4 text-center z-10 relative">
           <div className="md:w-3/4 lg:w-2/3 mx-auto animate-fade-in-up">
@@ -172,7 +200,7 @@ export default function Home() {
             <DifferentiatorCard
               icon={<Euro className="w-10 h-10 text-teal-600" />}
               title="Pricing Trasparente e Conveniente"
-              description="Piani chiari, senza costi nascosti o funzionalità freemium che ti confondono. Sai sempre quanto spendi, con la massima onestà."
+              description="Piani chiari, senza costi nascosti o funzionalità &quot;freemium&quot; che ti confondono. Sai sempre quanto spendi, con la massima onestà."
             />
             <DifferentiatorCard
               icon={<CodeIcon className="w-10 h-10 text-teal-600" />}
@@ -427,7 +455,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, role, 
         height={80}
         className="w-20 h-20 rounded-full mb-4 object-cover border-2 border-teal-400"
       />
-      <p className="text-lg italic text-gray-700 mb-4">{quote}</p>
+      <p className="text-lg italic text-gray-700 mb-4">"{quote}"</p>
       <p className="font-semibold text-gray-900 font-heading">{author}</p>
       <p className="text-sm text-gray-500">{role}</p>
     </div>
