@@ -1,19 +1,35 @@
-// app/page.tsx
 "use client";
 
-import React, { useState } from 'react'; // Importa useState
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, DollarSign, Lightbulb, FileText, Timer, LayoutDashboard, Briefcase, Download, BarChart2, Smartphone, Zap, Globe, Euro, TrendingUp, Menu, X } from 'lucide-react'; // Aggiungi Menu e X per le icone del toggle
-
+import {
+  CheckCircle,
+  DollarSign,
+  Lightbulb,
+  FileText,
+  Timer,
+  LayoutDashboard,
+  Briefcase,
+  Download,
+  BarChart2,
+  Smartphone,
+  Zap,
+  Globe,
+  Euro,
+  TrendingUp,
+  Menu,
+  X
+} from 'lucide-react';
 export default function Home() {
   const currentYear = new Date().getFullYear();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Stato per il menu mobile
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-teal-100 font-sans antialiased overflow-x-hidden">
+      {/* Header & Navigation */}
       <header className="py-4 px-4 md:px-12 bg-gradient-to-r from-blue-900 via-blue-800 to-teal-600 text-white shadow-2xl sticky top-0 z-50 rounded-none">
         <nav className="container mx-auto max-w-7xl flex justify-between items-center" aria-label="Main navigation">
           <Link href="/" className="flex items-center space-x-2 text-3xl font-extrabold text-white tracking-tight drop-shadow-lg" aria-label="Homepage">
@@ -192,7 +208,7 @@ export default function Home() {
 
       {/* SEZIONE TESTIMONIALS RIMOSSA */}
 
-      <section id="pricing" className="pt-12 md:pt-20 pb-8 md:pb-16 bg-gradient-to-br from-blue-700 via-teal-500 to-indigo-700 text-white rounded-none">
+      <section id="pricing" className="scroll-mt-24 pt-12 md:pt-20 pb-8 md:pb-16 bg-gradient-to-br from-blue-700 via-teal-500 to-indigo-700 text-white rounded-none">
         <div className="container mx-auto px-2 md:px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-12">
             Scegli il Piano Perfetto per Te.
