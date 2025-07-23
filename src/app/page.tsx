@@ -39,7 +39,7 @@ export default function Home() {
         </nav>
         {isMobileMenuOpen && (
           <nav className="md:hidden bg-gradient-to-r from-blue-800 to-teal-600 py-4 px-6 space-y-4 flex flex-col items-center rounded-none shadow-xl animate-fade-in" aria-label="Mobile navigation">
-            <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors text-lg font-semibold px-3 py-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>Funzionalità</Link>
+            <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors text-lg font-semibold px-3 py-2 rounded-md mx-auto" onClick={() => setIsMobileMenuOpen(false)}>Funzionalità</Link>
             <Link href="#pricing" className="text-white hover:text-teal-300 transition-colors text-lg font-semibold px-3 py-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>Prezzi</Link>
             <Button asChild className="bg-teal-400 hover:bg-teal-500 text-blue-900 rounded-md px-6 py-2 text-lg shadow-lg font-bold transition-all duration-200 transform hover:scale-105">
               <Link href="#cta" onClick={() => setIsMobileMenuOpen(false)}>Inizia Ora</Link>
@@ -192,7 +192,7 @@ export default function Home() {
 
       {/* SEZIONE TESTIMONIALS RIMOSSA */}
 
-      <section id="pricing" className="py-12 md:py-20 bg-gradient-to-r from-blue-700 via-teal-500 to-indigo-700 text-white rounded-none">
+      <section id="pricing" className="pt-12 md:pt-20 pb-8 md:pb-16 bg-gradient-to-br from-blue-700 via-teal-500 to-indigo-700 text-white rounded-none">
         <div className="container mx-auto px-2 md:px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-12">
             Scegli il Piano Perfetto per Te.
@@ -232,24 +232,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="cta" className="py-16 md:py-24 bg-gradient-to-r from-blue-700 via-teal-500 to-indigo-700 text-white text-center rounded-none shadow-2xl mx-2 animate-fade-in-up">
-        <div className="container mx-auto px-2 md:px-4">
-          <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight font-heading">
-            Non Aspettare. <span className="text-teal-300">Traccia il Tuo Successo Oggi.</span>
+      <section id="cta" className="py-16 md:py-24 bg-gray-50 text-center rounded-none shadow-2xl w-full animate-fade-in-up flex items-center justify-center">
+        <div className="w-full max-w-2xl mx-auto px-4 md:px-8 flex flex-col items-center justify-center">
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight font-heading text-blue-900">
+            Non Aspettare. <span className="text-teal-500">Traccia il Tuo Successo Oggi.</span>
           </h2>
-          <p className="text-xl md:text-2xl mb-10 opacity-90">
+          <p className="text-xl md:text-2xl mb-10 opacity-90 text-blue-800">
             Recupera tempo prezioso e massimizza i tuoi guadagni con il time tracker più semplice per professionisti IT.
           </p>
         <Button asChild
           size="lg"
-          className="bg-teal-400 hover:bg-teal-500 text-blue-900 font-bold py-4 px-10 rounded-md text-xl shadow-xl transition-all duration-300 transform hover:scale-105"
+          className="bg-teal-400 hover:bg-teal-500 text-blue-900 font-bold py-4 px-10 rounded-md text-xl shadow-xl transition-all duration-300 transform hover:scale-105 mx-auto"
         >
           <a href="#">Registrati Ora e Prova Gratis</a>
         </Button>
         </div>
       </section>
 
-      <footer className="bg-gray-900 text-white py-8 md:py-10 rounded-none shadow-2xl mt-10 animate-fade-in animate-delay-300">
+      <footer className="bg-gray-900 text-white py-8 md:py-10 rounded-none shadow-2xl animate-fade-in animate-delay-300">
         <div className="container mx-auto px-2 md:px-4 text-center text-sm opacity-90">
           <p className="mb-4">&copy; {currentYear} Tickle. Tutti i diritti riservati.</p>
           <nav className="mt-4 space-x-4" aria-label="Footer navigation">
