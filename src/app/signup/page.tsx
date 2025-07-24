@@ -74,11 +74,12 @@ export default function SignupPage() {
     // --- Fine Validazione lato Client ---
 
     // --- Tentativo di registrazione ---
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
     const { data, error: authError } = await supabase.auth.signUp({
       email: email,
       password: password,
       options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
+        emailRedirectTo: `${siteUrl}/auth/callback`,
       },
     });
 
