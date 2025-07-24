@@ -24,7 +24,7 @@ export default function LoginPage() {
     setError(null);
 
     if (!email || !password) {
-      setError('Inserisci email e password.');
+      setError('Per favore inserisci sia l’email che la password.');
       setLoading(false);
       return;
     }
@@ -35,18 +35,20 @@ export default function LoginPage() {
     });
 
     if (loginError) {
-      let userFriendlyError = `Errore durante il login: ${loginError.message}.`;
+      let userFriendlyError = `Si è verificato un errore durante l’accesso. Riprova.`;
       if (loginError.message.includes('Invalid login credentials')) {
         userFriendlyError = 'Email o password non corretti.';
       } else if (loginError.message.includes('Email not confirmed')) {
-        userFriendlyError = 'Devi prima confermare la tua email.';
+        userFriendlyError = 'Devi prima confermare la tua email. Controlla la posta elettronica.';
+      } else if (loginError.message.toLowerCase().includes('network')) {
+        userFriendlyError = 'Errore di connessione. Verifica la tua rete e riprova.';
       }
       setError(userFriendlyError);
       setLoading(false);
       return;
     }
 
-    setMessage('Login effettuato con successo!');
+    setMessage('Accesso effettuato con successo! Benvenuto su Tickle.');
     setLoading(false);
     // Redirect alla dashboard (o home)
     router.replace('/dashboard');
@@ -64,7 +66,7 @@ export default function LoginPage() {
           </p>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form onSubmit={handleLogin} className="space-y-6" aria-describedby={error ? 'form-error' : undefined}>
             <div>
               <label htmlFor="email" className="block text-sm font-semibold text-gray-800 mb-1">Email</label>
               <Input
@@ -74,6 +76,9 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="la.tua@email.com"
                 required
+                autoComplete="email"
+                aria-invalid={!!error}
+                aria-describedby={error ? 'form-error' : undefined}
                 className="w-full border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-lg shadow-sm text-base py-2 px-3 transition-colors duration-200"
               />
             </div>
@@ -86,35 +91,46 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="La tua password"
                 required
+                autoComplete="current-password"
+                aria-invalid={!!error}
+                aria-describedby={error ? 'form-error' : undefined}
                 className="w-full border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-lg shadow-sm text-base py-2 px-3 transition-colors duration-200"
               />
+              <p className="text-xs text-gray-500 mt-1">La password è case-sensitive.</p>
             </div>
             <Button
               type="submit"
-              className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg text-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+              className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg text-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center"
               disabled={loading}
+              aria-busy={loading}
             >
-              {loading ? 'Accesso in corso...' : 'Accedi'}
+              {loading ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                  </svg>
+                  Accesso in corso...
+                </span>
+              ) : 'Accedi'}
             </Button>
           </form>
-          {message && (
-            <p className={`mt-6 text-center text-base ${error ? 'text-red-600' : 'text-green-600'} font-medium`}>
-              {message}
-            </p>
-          )}
-          {error && (
-            <p className="mt-2 text-center text-sm text-red-600 font-medium">
-              {error}
-            </p>
-          )}
+          <div aria-live="polite" className="mt-4 min-h-[24px]">
+            {message && !error && (
+              <p className="text-center text-base text-green-600 font-semibold" role="status">{message}</p>
+            )}
+            {error && (
+              <p id="form-error" className="text-center text-base text-red-600 font-semibold" role="alert">{error}</p>
+            )}
+          </div>
           <p className="mt-8 text-center text-base text-gray-700">
             Non hai un account?{' '}
             <Link href="/signup" className="text-blue-700 hover:underline font-bold transition-colors duration-200 hover:text-teal-600">
               Registrati qui
             </Link>
           </p>
-          <p className="mt-2 text-center text-sm text-gray-500">
-            <Link href="/forgot-password" className="text-blue-700 hover:underline font-semibold transition-colors duration-200 hover:text-teal-600">
+          <p className="mt-4 text-center">
+            <Link href="/forgot-password" className="text-blue-700 hover:underline font-semibold transition-colors duration-200 hover:text-teal-600 text-base">
               Password dimenticata?
             </Link>
           </p>

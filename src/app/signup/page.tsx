@@ -45,7 +45,7 @@ export default function SignupPage() {
 
     // --- Validazione lato Client ---
     if (!validateEmail(email)) {
-      setError('Inserisci un formato email valido.');
+      setError('Per favore inserisci un indirizzo email valido.');
       setLoading(false);
       return;
     }
@@ -56,18 +56,18 @@ export default function SignupPage() {
       .eq('username', email)
       .single();
     if (existingProfile) {
-      setError('Questa email è già registrata e confermata. Prova ad accedere o recuperare la password.');
+      setError('Questa email è già registrata. Accedi oppure recupera la password.');
       setLoading(false);
       return;
     }
     const passwordErrors = validatePassword(password);
     if (passwordErrors.length > 0) {
-      setError(passwordErrors.join(' '));
+      setError('La password deve essere di almeno 8 caratteri.');
       setLoading(false);
       return;
     }
     if (password !== confirmPassword) {
-      setError('Le password non corrispondono.');
+      setError('Le password non coincidono.');
       setLoading(false);
       return;
     }
@@ -83,16 +83,18 @@ export default function SignupPage() {
     });
 
     if (authError) {
-      let userFriendlyError = `Errore durante la registrazione: ${authError.message}.`;
+      let userFriendlyError = 'Si è verificato un errore durante la registrazione. Riprova.';
       if (
         authError.message.includes('User already registered') ||
         authError.message.toLowerCase().includes('already registered') ||
         authError.message.toLowerCase().includes('already exists') ||
         authError.message.toLowerCase().includes('email address is already in use')
       ) {
-        userFriendlyError = 'Questa email è già registrata. Prova ad accedere o recuperare la password.';
+        userFriendlyError = 'Questa email è già registrata. Accedi oppure recupera la password.';
       } else if (authError.message.includes('Password should be at least 6 characters')) {
         userFriendlyError = 'La password deve essere di almeno 8 caratteri.';
+      } else if (authError.message.toLowerCase().includes('network')) {
+        userFriendlyError = 'Errore di connessione. Verifica la tua rete e riprova.';
       }
       setError(userFriendlyError);
       setLoading(false);
@@ -100,7 +102,7 @@ export default function SignupPage() {
     }
     // La creazione del profilo va fatta dopo la conferma e login
 
-    setMessage('Registrazione riuscita! Controlla la tua email e clicca il link di verifica.');
+    setMessage('Registrazione completata! Controlla la tua email e clicca sul link di conferma per attivare l’account.');
     setLoading(false);
   };
 
