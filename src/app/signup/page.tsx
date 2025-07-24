@@ -108,8 +108,8 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-blue-50 to-teal-100 font-sans antialiased p-4 sm:p-6 lg:p-8">
-      <Card className="w-full max-w-md bg-white shadow-2xl rounded-xl p-6 sm:p-8 border-4 border-blue-200 transition-all duration-300 hover:border-teal-400 hover:shadow-3xl">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-blue-50 to-teal-100 font-sans antialiased p-2 sm:p-6 lg:p-8">
+      <Card className="w-full max-w-sm sm:max-w-md bg-white shadow-2xl rounded-xl p-3 sm:p-8 border-4 border-blue-200 transition-all duration-300 hover:border-teal-400 hover:shadow-3xl">
         <CardHeader className="text-center pb-6">
           <CardTitle className="text-4xl font-extrabold text-blue-800 mb-2 font-heading tracking-tight">
             Registrati su <span className="text-teal-300 font-bold">Tickle</span>
@@ -132,7 +132,7 @@ export default function SignupPage() {
                 autoComplete="email"
                 aria-invalid={!!error || emailUsed}
                 aria-describedby={error ? 'form-error' : emailUsed ? 'email-used-error' : undefined}
-                className={`w-full border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-lg shadow-sm text-base py-2 px-3 transition-colors duration-200 ${emailUsed ? 'border-red-500' : ''}`}
+                className={`w-full min-w-0 border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-lg shadow-sm text-sm sm:text-base py-2 px-3 transition-colors duration-200 ${emailUsed ? 'border-red-500' : ''}`}
               />
               {checkingEmail && (
                 <span className="text-xs text-gray-500 mt-1 block">Controllo email in corso...</span>
@@ -157,7 +157,7 @@ export default function SignupPage() {
                 autoComplete="new-password"
                 aria-invalid={!!error}
                 aria-describedby={error ? 'form-error' : undefined}
-                className="w-full border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-lg shadow-sm text-base py-2 px-3 transition-colors duration-200 pr-10"
+                className="w-full min-w-0 border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-lg shadow-sm text-sm sm:text-base py-2 px-3 transition-colors duration-200 pr-10"
               />
               <button
                 type="button"
@@ -196,7 +196,7 @@ export default function SignupPage() {
                 autoComplete="new-password"
                 aria-invalid={!!error}
                 aria-describedby={error ? 'form-error' : undefined}
-                className="w-full border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-lg shadow-sm text-base py-2 px-3 transition-colors duration-200 pr-10"
+                className="w-full min-w-0 border-gray-300 focus:border-blue-600 focus:ring-blue-600 rounded-lg shadow-sm text-sm sm:text-base py-2 px-3 transition-colors duration-200 pr-10"
               />
               <button
                 type="button"
