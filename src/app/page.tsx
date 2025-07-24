@@ -13,15 +13,15 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <main className="min-h-[100dvh] bg-gradient-to-br from-gray-50 via-blue-50 to-teal-100 font-sans antialiased overflow-x-hidden pt-[50px] md:pt-[60px]">
+    <main className="min-h-[100dvh] bg-gradient-to-br from-gray-50 via-blue-50 to-teal-100 font-sans antialiased overflow-x-hidden pt-[44px] md:pt-[56px]">
       {/* Header & Navigation */}
-      <header className="py-0.5 md:py-2 px-2 md:px-10 bg-gradient-to-r from-blue-900 via-blue-800 to-teal-600 text-white shadow-2xl fixed top-0 left-0 w-full z-50 rounded-none animate-fade-in-down animate-duration-700 animate-ease-out">
+      <header className="py-2 md:py-3 px-2 md:px-10 bg-gradient-to-r from-blue-900 via-blue-800 to-teal-600 text-white shadow-2xl fixed top-0 left-0 w-full z-50 rounded-none border-none animate-fade-in-down animate-duration-700 animate-ease-out">
         <nav className="container mx-auto max-w-7xl flex justify-between items-center" aria-label="Main navigation">
-          <Link href="/" className="flex items-center h-11 md:h-12 space-x-2 text-2xl md:text-3xl font-extrabold text-white tracking-tight group" aria-label="Homepage">
-            <span className="flex items-center h-full animate-fade-in animate-duration-700 animate-delay-200">
-              <Image src="/logo-tickle.svg" alt="Logo Tickle" width={32} height={32} style={{ marginLeft: '-6px', marginTop: '0px', display: 'block' }} priority />
+          <Link href="/" className="flex items-center space-x-2 text-2xl md:text-3xl font-extrabold text-white tracking-tight group" aria-label="Homepage">
+            <span className="flex items-center animate-fade-in animate-duration-700 animate-delay-200">
+              <Image src="/logo-tickle.svg" alt="Logo Tickle" width={32} height={32} style={{ marginTop: '0px', display: 'block' }} priority />
             </span>
-            <span className="flex items-center h-full text-[1.7rem] md:text-3xl leading-none animate-fade-in animate-duration-700 animate-delay-300">Tickle</span>
+            <span className="flex items-center text-[1.7rem] md:text-3xl leading-none animate-fade-in animate-duration-700 animate-delay-300">Tickle</span>
           </Link>
           <div className="md:hidden">
             <button
