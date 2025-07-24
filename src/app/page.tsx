@@ -227,7 +227,7 @@ export default function Home() {
               features={[
                 "Progetti illimitati",
                 "Report avanzati",
-                "Export PDF e CSV",
+                "Export in PDF e CSV",
                 "Supporto via email",
               ]}
               buttonText="Passa a Premium"
