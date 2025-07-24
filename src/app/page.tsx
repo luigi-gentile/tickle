@@ -13,13 +13,15 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <main className="min-h-[100dvh] bg-gradient-to-br from-gray-50 via-blue-50 to-teal-100 font-sans antialiased overflow-x-hidden">
+    <main className="min-h-[100dvh] bg-gradient-to-br from-gray-50 via-blue-50 to-teal-100 font-sans antialiased overflow-x-hidden pt-[50px] md:pt-[60px]">
       {/* Header & Navigation */}
-      <header className="py-2 md:py-4 px-2 md:px-12 bg-gradient-to-r from-blue-900 via-blue-800 to-teal-600 text-white shadow-2xl sticky top-0 z-50 rounded-none">
+      <header className="py-0.5 md:py-2 px-2 md:px-10 bg-gradient-to-r from-blue-900 via-blue-800 to-teal-600 text-white shadow-2xl fixed top-0 left-0 w-full z-50 rounded-none animate-fade-in-down animate-duration-700 animate-ease-out">
         <nav className="container mx-auto max-w-7xl flex justify-between items-center" aria-label="Main navigation">
-          <Link href="/" className="flex items-center space-x-2 text-3xl md:text-3xl font-extrabold text-white tracking-tight" aria-label="Homepage">
-            <Image src="/logo-tickle.svg" alt="Logo Tickle" width={40} height={40} style={{ marginLeft: '-6px', marginTop: '4px' }} priority />
-            <span className="relative top-1 md:top-1.5 text-[1.7rem] md:text-3xl">Tickle</span>
+          <Link href="/" className="flex items-center h-11 md:h-12 space-x-2 text-2xl md:text-3xl font-extrabold text-white tracking-tight group" aria-label="Homepage">
+            <span className="flex items-center h-full animate-fade-in animate-duration-700 animate-delay-200">
+              <Image src="/logo-tickle.svg" alt="Logo Tickle" width={32} height={32} style={{ marginLeft: '-6px', marginTop: '0px', display: 'block' }} priority />
+            </span>
+            <span className="flex items-center h-full text-[1.7rem] md:text-3xl leading-none animate-fade-in animate-duration-700 animate-delay-300">Tickle</span>
           </Link>
           <div className="md:hidden">
             <button
@@ -31,11 +33,11 @@ export default function Home() {
             </button>
           </div>
           <div className="hidden md:flex space-x-4 items-center">
-            <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors font-semibold px-3 py-2 rounded-md text-lg">Funzionalità</Link>
-            <Link href="#pricing" className="text-white hover:text-teal-300 transition-colors font-semibold px-3 py-2 rounded-md text-lg">Prezzi</Link>
-            <span className="h-6 w-px bg-white/40 mx-2" aria-hidden="true"></span>
-            <Link href="/login" className="text-white hover:text-teal-300 transition-colors font-semibold px-3 py-2 rounded-md text-lg">Accedi</Link>
-            <Button asChild className="bg-teal-400 hover:bg-teal-500 text-blue-900 rounded-md px-6 py-2 shadow-lg font-bold transition-all duration-200 transform hover:scale-105 text-lg">
+            <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors font-semibold px-2.5 py-1.5 rounded-md text-[1rem] animate-fade-in animate-delay-200">Funzionalità</Link>
+            <Link href="#pricing" className="text-white hover:text-teal-300 transition-colors font-semibold px-2.5 py-1.5 rounded-md text-[1rem] animate-fade-in animate-delay-300">Prezzi</Link>
+            <span className="h-6 w-px bg-white/40 mx-2 animate-fade-in animate-delay-400" aria-hidden="true"></span>
+            <Link href="/login" className="text-white hover:text-teal-300 transition-colors font-semibold px-2.5 py-1.5 rounded-md text-[1rem] animate-fade-in animate-delay-400">Accedi</Link>
+            <Button asChild className="bg-teal-400 hover:bg-teal-500 text-blue-900 rounded-md px-3 py-1.5 shadow-lg font-bold transition-all duration-200 transform hover:scale-110 text-[0.97rem] min-h-0 h-auto animate-fade-in animate-delay-500">
               <Link href="/signup">Prova gratis</Link>
             </Button>
           </div>
@@ -52,7 +54,7 @@ export default function Home() {
           </nav>
         )}
       </header>
-      <section id="hero" className="relative bg-gradient-to-br from-blue-700 via-teal-500 to-indigo-800 text-white py-16 md:py-32 overflow-hidden flex items-center justify-center animate-fade-in-up rounded-none">
+      <section id="hero" className="relative bg-gradient-to-br from-blue-700 via-teal-500 to-indigo-800 text-white py-16 md:py-32 overflow-hidden flex items-center justify-center animate-fade-in-up animate-duration-700 animate-delay-200 rounded-none">
         <div className="container mx-auto px-2 md:px-4 text-center z-10 relative">
           <div className="w-full max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto animate-fade-in-up">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-8 font-heading tracking-tight drop-shadow-xl">
@@ -82,7 +84,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="problema-soluzione" className="py-12 md:py-20 bg-gradient-to-br from-gray-50 via-blue-100 to-teal-50 rounded-none">
+      <section id="problema-soluzione" className="py-12 md:py-20 bg-gradient-to-br from-gray-50 via-blue-100 to-teal-50 rounded-none animate-fade-in-up animate-duration-700 animate-delay-300">
         <div className="container mx-auto px-2 md:px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-800 mb-12">
             Il Tuo Tempo è Denaro. Non Perderne Più.
@@ -111,7 +113,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="funzionalita" className="py-12 md:py-20 bg-white/80 backdrop-blur-lg rounded-none">
+      <section id="funzionalita" className="py-12 md:py-20 bg-white/80 backdrop-blur-lg rounded-none animate-fade-in-up animate-duration-700 animate-delay-400">
         <div className="container mx-auto px-2 md:px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-800 mb-12">
             Le Funzionalità Essenziali per il Tuo Successo.
@@ -151,7 +153,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="differenziatori" className="py-12 md:py-20 bg-gradient-to-br from-gray-100 via-blue-50 to-teal-100 rounded-none">
+      <section id="differenziatori" className="py-12 md:py-20 bg-gradient-to-br from-gray-100 via-blue-50 to-teal-100 rounded-none animate-fade-in-up animate-duration-700 animate-delay-500">
         <div className="container mx-auto px-2 md:px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-800 mb-8">
             Perché Scegliere Tickle: I Nostri Punti di Forza.
@@ -197,7 +199,7 @@ export default function Home() {
 
       {/* SEZIONE TESTIMONIALS RIMOSSA */}
 
-      <section id="pricing" className="scroll-mt-24 pt-12 md:pt-20 pb-8 md:pb-16 bg-gradient-to-br from-blue-700 via-teal-500 to-indigo-700 text-white rounded-none">
+      <section id="pricing" className="scroll-mt-24 pt-12 md:pt-20 pb-8 md:pb-16 bg-gradient-to-br from-blue-700 via-teal-500 to-indigo-700 text-white rounded-none animate-fade-in-up animate-duration-700 animate-delay-600">
         <div className="container mx-auto px-2 md:px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-12">
             Scegli il Piano Perfetto per Te.
@@ -237,7 +239,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="cta" className="py-16 md:py-24 bg-gray-50 text-center rounded-none shadow-2xl w-full animate-fade-in-up flex items-center justify-center">
+      <section id="cta" className="py-16 md:py-24 bg-gray-50 text-center rounded-none shadow-2xl w-full animate-fade-in-up animate-duration-700 animate-delay-700 flex items-center justify-center">
         <div className="w-full max-w-2xl mx-auto px-4 md:px-8 flex flex-col items-center justify-center">
           <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight font-heading text-blue-900">
             Non Aspettare. <span className="text-teal-500">Traccia il Tuo Successo Oggi.</span>
@@ -263,7 +265,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-gray-900 text-white py-8 md:py-10 rounded-none shadow-2xl animate-fade-in animate-delay-300">
+      <footer className="bg-gray-900 text-white py-8 md:py-10 rounded-none shadow-2xl animate-fade-in-up animate-duration-700 animate-delay-800">
         <div className="container mx-auto px-2 md:px-4 text-center text-sm opacity-90">
           <p className="mb-4">&copy; {currentYear} Tickle. Tutti i diritti riservati.</p>
           <nav className="mt-4 space-x-4" aria-label="Footer navigation">
