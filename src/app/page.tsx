@@ -6,62 +6,47 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import {
-  CheckCircle,
-  DollarSign,
-  Lightbulb,
-  FileText,
-  Timer,
-  LayoutDashboard,
-  Briefcase,
-  Download,
-  BarChart2,
-  Smartphone,
-  Zap,
-  Globe,
-  Euro,
-  TrendingUp,
-  Menu,
-  X
+  Menu, X, CheckCircle, Timer, LayoutDashboard, Briefcase, Download, BarChart2, Smartphone, Zap, Euro, TrendingUp, Lightbulb, FileText, DollarSign, Globe
 } from 'lucide-react';
 export default function Home() {
   const currentYear = new Date().getFullYear();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-teal-100 font-sans antialiased overflow-x-hidden">
+    <main className="min-h-[100dvh] bg-gradient-to-br from-gray-50 via-blue-50 to-teal-100 font-sans antialiased overflow-x-hidden">
       {/* Header & Navigation */}
-      <header className="py-4 px-4 md:px-12 bg-gradient-to-r from-blue-900 via-blue-800 to-teal-600 text-white shadow-2xl sticky top-0 z-50 rounded-none">
+      <header className="py-2 md:py-4 px-2 md:px-12 bg-gradient-to-r from-blue-900 via-blue-800 to-teal-600 text-white shadow-2xl sticky top-0 z-50 rounded-none">
         <nav className="container mx-auto max-w-7xl flex justify-between items-center" aria-label="Main navigation">
-          <Link href="/" className="flex items-center space-x-2 text-3xl font-extrabold text-white tracking-tight drop-shadow-lg" aria-label="Homepage">
-            <Image src="/globe.svg" alt="Logo Tickle" width={40} height={40} className="drop-shadow-lg" />
-            <span className="relative top-1">Tickle</span>
+          <Link href="/" className="flex items-center space-x-2 text-3xl md:text-3xl font-extrabold text-white tracking-tight" aria-label="Homepage">
+            <Image src="/logo-tickle.svg" alt="Logo Tickle" width={40} height={40} style={{ marginLeft: '-6px', marginTop: '4px' }} priority />
+            <span className="relative top-1 md:top-1.5 text-[1.7rem] md:text-3xl">Tickle</span>
           </Link>
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white focus:outline-none"
+              className="text-white focus:outline-none p-2 rounded-md focus:ring-2 focus:ring-teal-300"
               aria-label={isMobileMenuOpen ? 'Chiudi menu di navigazione' : 'Apri menu di navigazione'}
             >
               {isMobileMenuOpen ? <X className="h-8 w-8" aria-hidden="true" /> : <Menu className="h-8 w-8" aria-hidden="true" />}
             </button>
           </div>
           <div className="hidden md:flex space-x-4 items-center">
-            <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors font-semibold px-3 py-2 rounded-md">Funzionalità</Link>
-            <Link href="#pricing" className="text-white hover:text-teal-300 transition-colors font-semibold px-3 py-2 rounded-md">Prezzi</Link>
+            <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors font-semibold px-3 py-2 rounded-md text-lg">Funzionalità</Link>
+            <Link href="#pricing" className="text-white hover:text-teal-300 transition-colors font-semibold px-3 py-2 rounded-md text-lg">Prezzi</Link>
             <span className="h-6 w-px bg-white/40 mx-2" aria-hidden="true"></span>
-            <Link href="/login" className="text-white hover:text-teal-300 transition-colors font-semibold px-3 py-2 rounded-md">Accedi</Link>
-            <Button asChild className="bg-teal-400 hover:bg-teal-500 text-blue-900 rounded-md px-6 py-2 shadow-lg font-bold transition-all duration-200 transform hover:scale-105">
+            <Link href="/login" className="text-white hover:text-teal-300 transition-colors font-semibold px-3 py-2 rounded-md text-lg">Accedi</Link>
+            <Button asChild className="bg-teal-400 hover:bg-teal-500 text-blue-900 rounded-md px-6 py-2 shadow-lg font-bold transition-all duration-200 transform hover:scale-105 text-lg">
               <Link href="/signup">Prova gratis</Link>
             </Button>
           </div>
         </nav>
         {isMobileMenuOpen && (
-          <nav className="md:hidden bg-gradient-to-r from-blue-800 to-teal-600 py-4 px-6 space-y-4 flex flex-col items-center rounded-none shadow-xl animate-fade-in" aria-label="Mobile navigation">
-            <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors text-lg font-semibold px-3 py-2 rounded-md mx-auto" onClick={() => setIsMobileMenuOpen(false)}>Funzionalità</Link>
-            <Link href="#pricing" className="text-white hover:text-teal-300 transition-colors text-lg font-semibold px-3 py-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>Prezzi</Link>
+          <nav className="md:hidden bg-gradient-to-r from-blue-800 to-teal-600 py-4 px-4 space-y-4 flex flex-col items-center rounded-none shadow-xl animate-fade-in" aria-label="Mobile navigation">
+            <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors text-lg font-semibold px-4 py-3 rounded-md mx-auto w-full text-center" onClick={() => setIsMobileMenuOpen(false)}>Funzionalità</Link>
+            <Link href="#pricing" className="text-white hover:text-teal-300 transition-colors text-lg font-semibold px-4 py-3 rounded-md w-full text-center" onClick={() => setIsMobileMenuOpen(false)}>Prezzi</Link>
             <hr className="w-2/3 border-t border-white/30 my-2" />
-            <Link href="/login" className="text-white hover:text-teal-300 transition-colors text-lg font-semibold px-3 py-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>Accedi</Link>
-            <Button asChild className="bg-teal-400 hover:bg-teal-500 text-blue-900 rounded-md px-6 py-2 text-lg shadow-lg font-bold transition-all duration-200 transform hover:scale-105">
+            <Link href="/login" className="text-white hover:text-teal-300 transition-colors text-lg font-semibold px-4 py-3 rounded-md w-full text-center" onClick={() => setIsMobileMenuOpen(false)}>Accedi</Link>
+            <Button asChild className="bg-teal-400 hover:bg-teal-500 text-blue-900 rounded-md px-6 py-3 text-lg shadow-lg font-bold transition-all duration-200 transform hover:scale-105 w-full">
               <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>Prova gratis</Link>
             </Button>
           </nav>
