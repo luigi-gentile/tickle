@@ -33,7 +33,7 @@ export default function Home() {
       <header className="py-4 px-4 md:px-12 bg-gradient-to-r from-blue-900 via-blue-800 to-teal-600 text-white shadow-2xl sticky top-0 z-50 rounded-none">
         <nav className="container mx-auto max-w-7xl flex justify-between items-center" aria-label="Main navigation">
           <Link href="/" className="flex items-center space-x-2 text-3xl font-extrabold text-white tracking-tight drop-shadow-lg" aria-label="Homepage">
-            <Image src="/timer.png" alt="Logo Tickle" width={40} height={40} className="drop-shadow-lg" />
+            <Image src="/globe.svg" alt="Logo Tickle" width={40} height={40} className="drop-shadow-lg" />
             <span className="relative top-1">Tickle</span>
           </Link>
           <div className="md:hidden">
@@ -48,8 +48,10 @@ export default function Home() {
           <div className="hidden md:flex space-x-4 items-center">
             <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors font-semibold px-3 py-2 rounded-md">Funzionalità</Link>
             <Link href="#pricing" className="text-white hover:text-teal-300 transition-colors font-semibold px-3 py-2 rounded-md">Prezzi</Link>
+            <span className="h-6 w-px bg-white/40 mx-2" aria-hidden="true"></span>
+            <Link href="/login" className="text-white hover:text-teal-300 transition-colors font-semibold px-3 py-2 rounded-md">Accedi</Link>
             <Button asChild className="bg-teal-400 hover:bg-teal-500 text-blue-900 rounded-md px-6 py-2 shadow-lg font-bold transition-all duration-200 transform hover:scale-105">
-              <Link href="#cta">Inizia Ora</Link>
+              <Link href="/signup">Prova gratis</Link>
             </Button>
           </div>
         </nav>
@@ -57,8 +59,10 @@ export default function Home() {
           <nav className="md:hidden bg-gradient-to-r from-blue-800 to-teal-600 py-4 px-6 space-y-4 flex flex-col items-center rounded-none shadow-xl animate-fade-in" aria-label="Mobile navigation">
             <Link href="#funzionalita" className="text-white hover:text-teal-300 transition-colors text-lg font-semibold px-3 py-2 rounded-md mx-auto" onClick={() => setIsMobileMenuOpen(false)}>Funzionalità</Link>
             <Link href="#pricing" className="text-white hover:text-teal-300 transition-colors text-lg font-semibold px-3 py-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>Prezzi</Link>
+            <hr className="w-2/3 border-t border-white/30 my-2" />
+            <Link href="/login" className="text-white hover:text-teal-300 transition-colors text-lg font-semibold px-3 py-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>Accedi</Link>
             <Button asChild className="bg-teal-400 hover:bg-teal-500 text-blue-900 rounded-md px-6 py-2 text-lg shadow-lg font-bold transition-all duration-200 transform hover:scale-105">
-              <Link href="#cta" onClick={() => setIsMobileMenuOpen(false)}>Inizia Ora</Link>
+              <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>Prova gratis</Link>
             </Button>
           </nav>
         )}
@@ -235,7 +239,7 @@ export default function Home() {
               frequency="/mese"
               features={[
                 "Progetti illimitati",
-                "Report avanzati e personalizzabili",
+                "Report avanzati",
                 "Export PDF e CSV",
                 "Supporto via email",
               ]}
@@ -256,12 +260,21 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-10 opacity-90 text-blue-800">
             Recupera tempo prezioso e massimizza i tuoi guadagni con il time tracker più semplice per professionisti IT.
           </p>
-        <Button asChild
-          size="lg"
-          className="bg-teal-400 hover:bg-teal-500 text-blue-900 font-bold py-4 px-10 rounded-md text-xl shadow-xl transition-all duration-300 transform hover:scale-105 mx-auto"
-        >
-          <a href="#">Registrati Ora e Prova Gratis</a>
-        </Button>
+          <div className="flex flex-col sm:flex-row gap-4 w-full justify-center items-center">
+            <Button asChild
+              size="lg"
+              className="bg-teal-400 hover:bg-teal-500 text-blue-900 font-bold py-4 px-10 rounded-md text-xl shadow-xl transition-all duration-300 transform hover:scale-105 mx-auto"
+            >
+              <a href="/signup" aria-label="Registrati Ora e Prova Gratis">Registrati Ora e Prova Gratis</a>
+            </Button>
+            <Button asChild
+              size="lg"
+              variant="outline"
+              className="border-blue-700 text-blue-700 hover:bg-blue-50 font-bold py-4 px-10 rounded-md text-xl shadow-xl transition-all duration-300 transform hover:scale-105 mx-auto"
+            >
+              <a href="/login" aria-label="Accedi">Accedi</a>
+            </Button>
+          </div>
         </div>
       </section>
 

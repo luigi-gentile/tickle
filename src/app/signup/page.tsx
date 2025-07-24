@@ -37,37 +37,6 @@ export default function SignupPage() {
     return [];
   };
 
-  // Controllo email già usata in tempo reale
-  React.useEffect(() => {
-    let active = true;
-    const checkEmail = async () => {
-      setEmailUsed(false);
-      if (!validateEmail(email)) return;
-      setCheckingEmail(true);
-      const { data: existingUser } = await supabase
-        .from('auth.users')
-        .select('username, email_confirmed_at')
-        .eq('username', email)
-        .single();
-      if (!active) return;
-      if (existingUser && existingUser.email_confirmed_at) {
-        setEmailUsed(true);
-      } else {
-        setEmailUsed(false);
-      }
-      setCheckingEmail(false);
-    };
-    if (email) {
-      const timeout = setTimeout(checkEmail, 500);
-      return () => {
-        active = false;
-        clearTimeout(timeout);
-      };
-    } else {
-      setEmailUsed(false);
-    }
-  }, [email]);
-
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -77,6 +46,17 @@ export default function SignupPage() {
     // --- Validazione lato Client ---
     if (!validateEmail(email)) {
       setError('Inserisci un formato email valido.');
+      setLoading(false);
+      return;
+    }
+    // Controllo email già usata su submit
+    const { data: existingProfile } = await supabase
+      .from('profiles')
+      .select('username')
+      .eq('username', email)
+      .single();
+    if (existingProfile) {
+      setError('Questa email è già registrata e confermata. Prova ad accedere o recuperare la password.');
       setLoading(false);
       return;
     }
@@ -93,25 +73,7 @@ export default function SignupPage() {
     }
     // --- Fine Validazione lato Client ---
 
-    // --- Controllo fresh su Supabase: email già registrata e confermata ---
-    const { data: existingUser, error: fetchError } = await supabase
-      .from('auth.users')
-      .select('username, email_confirmed_at')
-      .eq('username', email)
-      .single();
-
-    if (fetchError && fetchError.code !== 'PGRST116') {
-      // Se la tabella non esiste o errore diverso da "No rows found", ignora e prosegui
-      console.warn('Errore nel controllo utente:', fetchError.message);
-    }
-
-    if (existingUser && existingUser.email_confirmed_at) {
-      setError('Questa email è già registrata e confermata. Prova ad accedere o recuperare la password.');
-      setLoading(false);
-      return;
-    }
-    // --- Fine controllo ---
-
+    // --- Tentativo di registrazione ---
     const { data, error: authError } = await supabase.auth.signUp({
       email: email,
       password: password,
@@ -122,13 +84,17 @@ export default function SignupPage() {
 
     if (authError) {
       let userFriendlyError = `Errore durante la registrazione: ${authError.message}.`;
-      if (authError.message.includes('User already registered')) {
+      if (
+        authError.message.includes('User already registered') ||
+        authError.message.toLowerCase().includes('already registered') ||
+        authError.message.toLowerCase().includes('already exists') ||
+        authError.message.toLowerCase().includes('email address is already in use')
+      ) {
         userFriendlyError = 'Questa email è già registrata. Prova ad accedere o recuperare la password.';
       } else if (authError.message.includes('Password should be at least 6 characters')) {
         userFriendlyError = 'La password deve essere di almeno 8 caratteri.';
       }
       setError(userFriendlyError);
-      console.error('Errore registrazione Supabase:', authError);
       setLoading(false);
       return;
     }
@@ -169,9 +135,11 @@ export default function SignupPage() {
                 <span className="text-xs text-gray-500 mt-1 block">Controllo email in corso...</span>
               )}
               {emailUsed && (
-                <span id="email-used-error" className="text-xs text-red-600 mt-1 block" role="alert">
-                  Questa email è già registrata e confermata. Prova ad accedere o recuperare la password.
-                </span>
+                <>
+                  <span id="email-used-error" className="text-xs text-red-600 mt-1 block" role="alert">
+                    Questa email è già registrata. Prova ad accedere o recupera la password.
+                  </span>
+                </>
               )}
             </div>
             <div className="relative">
